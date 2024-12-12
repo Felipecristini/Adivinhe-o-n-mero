@@ -1,0 +1,45 @@
+from random import randint
+from time import sleep
+
+print('-'*30)
+print('ADIVINHE O NÚMERO'.center(30))
+print('-'*30)
+
+
+while True:
+    pc = randint(1,10)
+    tentativa = 0
+
+    while True:
+        try:
+            num = int(input('Digite um número entre 1 a 10:'))
+            if num < 1 or num > 10:
+                print('\033[031mERRO! DIGITE UM NÚMERO ENTRE 1 E 10.\033[m')
+                continue
+            tentativa += 1
+            if num == pc:
+                print('VOCÊ ACERTOU! PARABÉNS!')
+                print(f'Você acertou em {tentativa} tentativa(s).')
+                break
+            elif num > pc:
+                print('Menos... Tente novamente.')
+            else:
+                print('Mais... Tente novamente.')
+        except ValueError:
+            print('\033[031mERRO! DIGITE UM NÚMERO INTEIRO ENTRE 1 E 10.\033[m')
+
+    while True:
+            cont = str(input('Quer jogar novamente? [ S ] ou [ N ]')).strip().lower()
+            if cont == 's':
+                print('Reiniciando o jogo....')
+                sleep(1)
+                break
+            elif cont == 'n':
+                print('Obrigado por jogar! Até a próxima.')
+                print('Encerrando....')
+                sleep(1.5)
+                exit()
+            else:
+                print('\033[mERRO! DIGITE APENAS [S] PARA SIM OU [N] PARA NÃO.\033[m')
+
+
